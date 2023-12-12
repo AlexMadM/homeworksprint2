@@ -2,19 +2,50 @@
 }
 
 .input {
+    display: flex;
+    width: 372px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .inputWrapper {
 }
 
 .superInput {
+    width: 372px;
+    height: 36px;
+    flex-shrink: 0;
 }
 
 .errorInput {
+    display: flex;
+    width: 372px;
+    height: 36px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    flex-shrink: 0;
+    color: #CC1439;
+
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .errorInput:focus {
+    border-radius: 5px;
+    border: 1px solid #CC1439;
 }
 
 .error {
+    color: #CC1439;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

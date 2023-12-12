@@ -1,36 +1,81 @@
 .button {
+    display: inline-flex;
+    padding: 5px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
 }
 
 .disabled {
+
+    border-radius: 3px;
+    opacity: 0.5;
+    background: #004D99;
 }
 
 .secondary {
+    border-radius: 3px;
+    border: 1px solid #06C;
 }
 
 .default {
+    color:  #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+    border-radius: 3px;
+    background:  #06C;
 }
 
 .red {
+    color:  #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+    border-radius: 3px;
+    background:#CC1439;
 }
 
 .default:hover {
+    border-radius: 3px;
+    background: #0080FF;
 }
 
 .red:hover {
+    border-radius: 3px;
+    background: #FF1A47;
 }
 
 .secondary:hover {
+    border-radius: 3px;
+    opacity: 0.5;
+    background: #004D99;
 }
 
 
 .default:active {
+    border-radius: 3px;
+    background: #0059B2;
 }
 
 .secondary:active {
+    border-radius: 3px;
+    border: 1px solid #06C;
+    background: #C9E5FF;
 }
 
 .red:active {
+    border-radius: 3px;
+    background: #B21232;
 }
 
 .button:disabled {
+    border-radius: 3px;
+    opacity: 0.5;
+    background: #004D99;
 }
