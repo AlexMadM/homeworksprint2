@@ -1,4 +1,10 @@
 .sidebar {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 1280px;
+    height: 60px;
+    flex-shrink: 0;
 }
 
 .sidebar.open {
@@ -8,6 +14,9 @@
 }
 
 .nav {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .nav a {
@@ -17,6 +26,7 @@
 }
 
 .nav a.active {
+color: #004D99;
 }
 .close {
 }
