@@ -32,29 +32,40 @@ function Clock() {
     const onMouseLeave = () => { // пишут студенты // спрятать дату если мышка не наведена
         setShow(false)
     }
-    //
+   const days =["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+    let months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+
     // const stringTime ='date->time' || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
     // const stringDate =  'date->date' || <br/>
-
+    const get2digit=(num:number)=>num<10? '0' +num :num
+    const getMonthDays=(num:number)=>num<10? '0' +num :num
     // // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
+    const hours = get2digit(date.getHours())
+    const minutes =get2digit( date.getMinutes())
+    const seconds = get2digit(date.getSeconds())
     const getTwoNumbersTime = (time: number) => {
         if (String(time).length === 1) {
             return `0${time}`
         }
         return time
     }
-    const stringTime = `${getTwoNumbersTime(hours)}:${getTwoNumbersTime(minutes)}:${getTwoNumbersTime(seconds)}`
-    const stringDate = `${date.getDate()} ${date.getMonth() + 1} ${date.getFullYear()}`;
+
+    const stringTime = `${getTwoNumbersTime(+hours)}:${getTwoNumbersTime(+minutes)}:${getTwoNumbersTime(+seconds)}`
+    const stringDate = `${getMonthDays(date.getDate())} ${getMonthDays(date.getMonth() + 1)} ${getMonthDays(date.getFullYear())}`;
+
 
     // // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
     // const stringDay = 'date->day' || <br/> // пишут студенты
     // const stringMonth = 'date->month' || <br/> // пишут студенты
+    let formatterDay = new Intl.DateTimeFormat('en', {
+        weekday:"long"
+    })
+    let formatterMonth = new Intl.DateTimeFormat('en', {
+        month: "long"
 
-    const stringDay= date.getDate()
-    const stringMonth= date.getMonth() + 1
+    })
+    let stringDay= formatterDay.format(date)
+    const stringMonth= formatterMonth.format(date)
 
     return (
         <div className={s.clock}>
