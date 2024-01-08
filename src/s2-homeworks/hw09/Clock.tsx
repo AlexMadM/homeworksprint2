@@ -51,7 +51,7 @@ function Clock() {
     }
 
     const stringTime = `${getTwoNumbersTime(+hours)}:${getTwoNumbersTime(+minutes)}:${getTwoNumbersTime(+seconds)}`
-    const stringDate = `${getMonthDays(date.getDate())}. ${getMonthDays(date.getMonth() + 1)}. ${getMonthDays(date.getFullYear())}`;
+    const stringDate = `${getMonthDays(date.getDate())}.${getMonthDays(date.getMonth() + 1)}.${getMonthDays(date.getFullYear())}`;
 
 
     // // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
