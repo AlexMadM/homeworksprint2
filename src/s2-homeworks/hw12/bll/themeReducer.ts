@@ -2,6 +2,7 @@ const initState = {
     themeId: 1,
 }
 
+
 export type State={
     themeId:number
 }
