@@ -36,18 +36,17 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode(res.data.status)
+                setCode('200')
                 setImage(success200)
-                setText(res.data.data.errorText)
-                setInfo(res.data.data.info)
+                setText(res.data.errorText)
+                setInfo(res.data.info)
                 // дописать
-
                 setDis(false)
             })
             .catch((e) => {
                 // дописать
-                console.log(e)
-console.log(e)
+
+
 if (e.response.data) {
     setCode(e.response.status)
     setImage(error400)
