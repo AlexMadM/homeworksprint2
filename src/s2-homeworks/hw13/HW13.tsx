@@ -41,20 +41,28 @@ const HW13 = () => {
                 setText(res.data.data.errorText)
                 setInfo(res.data.data.info)
                 // дописать
-                console.log(res)
+
                 setDis(false)
             })
             .catch((e) => {
                 // дописать
-                setDis(false)
-                console.log(e)
-                console.log(e.message)
-                console.log(e.response.data.errorText)
-                setCode(e.response.status)
-                setImage(error400)
-                setText(e.response.data.errorText)
-                setInfo(e.response.data.info)
+console.log(e)
+if (e.response.data==undefined) {
+    setCode(e.code)
+    setImage(error400)
+    setText(e.message)
+    setInfo(e.response.data.info)
+    setDis(false)
+    console.log(e)
 
+
+}else {
+    setCode(e.response.status)
+    setImage(error400)
+    setText(e.response.data.errorText)
+    setInfo(e.response.data.info)
+    setDis(false)
+}
 
 
             })
