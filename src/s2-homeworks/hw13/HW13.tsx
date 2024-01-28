@@ -19,10 +19,10 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
-    const [dis,setDis]=useState(false)
+
 
     const send = (x?: boolean | null) => () => {
-        setDis(true)
+
         const url =
             x === null
                 ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
