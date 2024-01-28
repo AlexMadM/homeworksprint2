@@ -38,8 +38,8 @@ const HW13 = () => {
             .then((res) => {
                 setCode(res.data.status)
                 setImage(success200)
-                setText(res.data.errorText)
-                setInfo(res.data.info)
+                setText(res.data.data.errorText)
+                setInfo(res.data.data.info)
                 // дописать
                 console.log(res)
                 setDis(false)
@@ -50,7 +50,7 @@ const HW13 = () => {
                 console.log(e)
                 console.log(e.message)
                 console.log(e.response.data.errorText)
-                setCode(e.response.data.status)
+                setCode(e.response.status)
                 setImage(error400)
                 setText(e.response.data.errorText)
                 setInfo(e.response.data.info)
