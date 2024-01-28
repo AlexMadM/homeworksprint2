@@ -59,13 +59,13 @@ const HW13 = () => {
                     )
                     // setText(e.response.data?.errorText)
                     setInfo(e.response.data?.info)
+                    setText(e.response.data.errorText)
 
                 } else if (AxiosError.ERR_NETWORK ) {
                     console.log(e)
                     setCode('Ошибка сети!')
                     setImage(errorUnknown)
-                    setText('Error')
-                    setInfo('')
+                    setInfo('Error')
 
                 } else {
                     console.log(e)
