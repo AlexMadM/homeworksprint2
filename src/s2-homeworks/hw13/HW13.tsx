@@ -19,8 +19,10 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [dis,setDis]=useState(false)
 
     const send = (x?: boolean | null) => () => {
+        setDis(true)
         const url =
             x === null
                 ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
@@ -36,12 +38,15 @@ const HW13 = () => {
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
+                setText('good')
+                setInfo('...loading')
                 // дописать
-
+                setDis(false)
             })
             .catch((e) => {
                 // дописать
-
+                setImage(error400)
+                setDis(false)
             })
     }
 
@@ -56,6 +61,7 @@ const HW13 = () => {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
+                        disabled={dis}
 
                     >
                         Send true
@@ -65,6 +71,7 @@ const HW13 = () => {
                         onClick={send(false)}
                         xType={'secondary'}
                         // дописать
+                        disabled={dis}
 
                     >
                         Send false
@@ -74,6 +81,7 @@ const HW13 = () => {
                         onClick={send(undefined)}
                         xType={'secondary'}
                         // дописать
+                        disabled={dis}
 
                     >
                         Send undefined
@@ -83,6 +91,7 @@ const HW13 = () => {
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
                         // дописать
+                        disabled={dis}
 
                     >
                         Send null
