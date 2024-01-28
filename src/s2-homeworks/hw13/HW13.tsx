@@ -36,38 +36,57 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode('200')
+                setCode('Код 200!')
                 setImage(success200)
-                setText(res.data.errorText)
+                setText(res.data?.errorText)
                 setInfo(res.data.info)
                 // дописать
-                setDis(false)
+
             })
             .catch((e) => {
                 // дописать
 
-
-if (e.response.data) {
-    setCode(e.response.status)
-    setImage(error400)
-    setText(e.response.data.errorText)
-    setInfo(e.response.data.info)
-    setDis(false)
-
-
-
-
-}else {
-    setCode(e.response.status)
-    setImage(error400)
-    setText(e.message)
-    setInfo(e.response.statusText)
-    console.log(e)
-    setDis(false)
-}
-
-
+                if (e.response) {
+                    setCode(`Код ${e.response.status}!`)
+                    setImage(
+                        e.response.status === 400
+                            ? error400
+                            : e.response.status === 500
+                                ? error500
+                                : errorUnknown,
+                    )
+                    setText(e.response.data?.errorText)
+                    setInfo(e.info)
+                } else if (e.message === 'Network Error') {
+                    setCode('Ошибка сети!')
+                    setImage(errorUnknown)
+                } else {
+                    setCode('Неизвестная ошибка!')
+                    setImage(errorUnknown)
+                    setText(e.message)
+                }
             })
+// if (e.response.data) {
+//     setCode(e.response.status)
+//     setImage(error400)
+//     setText(e.response.data.errorText)
+//     setInfo(e.response.data.info)
+//     setDis(false)
+//
+//
+//
+//
+// }else {
+//     setCode(e.response.status)
+//     setImage(error400)
+//     setText(e.message)
+//     setInfo(e.response.statusText)
+//     console.log(e)
+//     setDis(false)
+// }
+//
+//
+
 
     }
 
@@ -82,7 +101,7 @@ if (e.response.data) {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
-                        disabled={dis}
+                        disabled={info === '...loading'}
 
                     >
                         Send true
@@ -92,7 +111,7 @@ if (e.response.data) {
                         onClick={send(false)}
                         xType={'secondary'}
                         // дописать
-                        disabled={dis}
+                        disabled={info === '...loading'}
 
                     >
                         Send false
@@ -102,7 +121,7 @@ if (e.response.data) {
                         onClick={send(undefined)}
                         xType={'secondary'}
                         // дописать
-                        disabled={dis}
+                        disabled={info === '...loading'}
 
                     >
                         Send undefined
@@ -112,7 +131,7 @@ if (e.response.data) {
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
                         // дописать
-                        disabled={dis}
+                        disabled={info === '...loading'}
 
                     >
                         Send null
