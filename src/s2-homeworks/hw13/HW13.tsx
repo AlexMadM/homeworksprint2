@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW13.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
-import axios from 'axios'
+import axios, {AxiosError} from 'axios'
 import success200 from './images/200.svg'
 import error400 from './images/400.svg'
 import error500 from './images/500.svg'
@@ -36,7 +36,8 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode(res.data.response)
+
+                setCode(`${res.status}!`)
                 setImage(success200)
                 setText(res.data?.errorText)
                 setInfo(res.data?.info)
@@ -46,8 +47,9 @@ const HW13 = () => {
             .catch((e) => {
                 // дописать
 
-                if (e.response) {
-                    setCode(`Код ${e.response.status}!`)
+                if (e.response.data) {
+                    console.log(e)
+                    setCode(`${e.response.status}`)
                     setImage(
                         e.response.status === 400
                             ? error400
@@ -55,15 +57,22 @@ const HW13 = () => {
                                 ? error500
                                 : errorUnknown,
                     )
-                    setText(e.response.data?.errorText)
-                    setInfo(e.info)
-                } else if (e.message === 'Network Error') {
+                    // setText(e.response.data?.errorText)
+                    setInfo(e.response.data?.info)
+
+                } else if (AxiosError.ERR_NETWORK ) {
+                    console.log(e)
                     setCode('Ошибка сети!')
                     setImage(errorUnknown)
+                    setText('Error')
+                    setInfo('')
+
                 } else {
+                    console.log(e)
                     setCode('Неизвестная ошибка!')
                     setImage(errorUnknown)
-                    setText(e.message)
+                    setText('Error')
+
                 }
             })
 
